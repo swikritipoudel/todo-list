@@ -8,6 +8,13 @@ listForm.addEventListener("submit", event=>{
     event.preventDefault()
     let addTask = taskInput.value
 
+
+    if(!addTask){
+        message.textContent = "please enter a task"
+        return
+    }
+
+    message.textContent = ""
    
 
     let taskList = document.createElement("div")
@@ -71,10 +78,7 @@ listForm.addEventListener("submit", event=>{
     })
    })
 
-    if(!addTask){
-        taskList.innerHTML = ""
-        return
-    }
+    
     
 
 taskInput.value = ""

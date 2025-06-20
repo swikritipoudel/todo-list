@@ -10,58 +10,88 @@ listForm.addEventListener("submit", event=>{
 
 
     if(!addTask){
-        message.textContent = "please enter a task"
+        message.textContent = "Please enter a task"
         return
     }
 
     message.textContent = ""
    
+    createTask(addTask)
 
-    let taskList = document.createElement("div")
+    
+    taskInput.value = ""
+
+})
+
+
+function createTask(taskToAdd){
+     let taskList = document.createElement("div")
+     taskList.classList.add("taskList")
     
 
     let checkbox = document.createElement("input")
     checkbox.setAttribute("type", "checkbox")
+    checkbox.classList.add("checkbox")
+    
     
     
     let task = document.createElement("label")
+    task.textContent = taskToAdd
     task.classList.add("task")
-    task.textContent = addTask
+
+    let buttons = document.createElement("div")
 
     let deleteBtn = document.createElement("button")
-    deleteBtn.classList.add("deleteBtn")
     deleteBtn.textContent = "🗑️"
+    deleteBtn.classList.add("deleteBtn")
 
     let editBtn = document.createElement("button")
-    editBtn.classList.add("deleteBtn")
     editBtn.textContent = "✏️"
+    editBtn.classList.add("editBtn")
 
-    
-    taskList.appendChild(checkbox)
+    task.appendChild(checkbox)
+
+    buttons.appendChild(deleteBtn)
+    buttons.appendChild(editBtn)
+
     taskList.appendChild(task)
-    taskList.appendChild(deleteBtn)
-    taskList.appendChild(editBtn)
+    taskList.appendChild(buttons)
+    
 
     card.appendChild(taskList)
 
-   checkbox.addEventListener("change",()=>{
+    markDone(checkbox,task)
+    deleteTask(deleteBtn,taskList)
+    editTask(editBtn,taskList,task)
+
+}
+
+
+function markDone(checkbox,task){
+    checkbox.addEventListener("change",()=>{
     if(checkbox.checked){
-    task.classList.add("checkbox")
+    task.classList.add("markDone")
     }
 
     else{
-        task.classList.remove("checkbox")
+        task.classList.remove("markDone")
     }
    })
 
-   deleteBtn.addEventListener("click", ()=>{
+   
+}
+
+
+function deleteTask(deleteBtn,taskList){
+deleteBtn.addEventListener("click", ()=>{
     taskList.remove()
    })
+}
 
-   
-   
-   editBtn.addEventListener("click", ()=>{
-    editInput = document.createElement("input")
+
+function editTask(editBtn,taskList,task){
+    editBtn.addEventListener("click", ()=>{
+    let editInput = document.createElement("input")
     editInput.setAttribute("type", "text")
     editInput.value = task.innerText
 
@@ -77,11 +107,4 @@ listForm.addEventListener("submit", event=>{
         
     })
    })
-
-    
-    
-
-taskInput.value = ""
-
-})
-
+}

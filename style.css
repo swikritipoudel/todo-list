@@ -1,6 +1,15 @@
 *{
 box-sizing: border-box;
 }
+
+.listForm{
+   display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
 .card{
    display: flex;
    flex-direction: column;
@@ -9,9 +18,8 @@ box-sizing: border-box;
    padding: 2em;
    border-radius: 5px;
    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   width: min(90vw,500px);
    max-width: 100%;
-   min-width: 320px;
-   width: 90%;
    margin: auto;
 }
 
@@ -21,7 +29,7 @@ h1{
 }
 
 .taskInput{
-   width: 300px;
+   width: min(300px, 100%);
    font-size: 2rem;
    border-radius: 10px;
    border: 1px solid black;
@@ -36,6 +44,7 @@ button[type="submit"]{
    height: 50px;
    width: 50px;
    border: none;
+   margin: 5px;
 }
 
 .message{
@@ -46,7 +55,7 @@ button[type="submit"]{
 
 .taskList{
    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-   width: 350px;
+    width: min(350px, 100%);
    padding: 5px;
    background-color: #d3cece;
    border-radius: 10px;

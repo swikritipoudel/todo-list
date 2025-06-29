@@ -49,12 +49,12 @@ function createTask(taskToAdd){
     editBtn.textContent = "✏️"
     editBtn.classList.add("editBtn")
 
-    task.appendChild(checkbox)
-
-    buttons.appendChild(deleteBtn)
-    buttons.appendChild(editBtn)
-
+    taskList.appendChild(checkbox)
     taskList.appendChild(task)
+
+    buttons.appendChild(editBtn)
+    buttons.appendChild(deleteBtn)
+
     taskList.appendChild(buttons)
     
 
